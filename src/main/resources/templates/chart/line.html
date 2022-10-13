@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Stacked Line Chart - Apache ECharts Demo</title>
+</head>
+
+<body>
+<div th:id="chart-container"></div>
+<script src="https://fastly.jsdelivr.net/npm/echarts@5.4.0/dist/echarts.min.js"></script>
+<link rel="stylesheet" href="/css/line.css">
+<script src="/js/line.js"></script>
+<!-- Jquery CDN 로드 : 항상 최신 버전 사용 -->
+<script  src="https://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+
+
+    //Line2
+    $(document).ready(function (){
+        getMList();
+    });
+
+    function getMList(){
+        let list = [];
+
+        var params = {
+              bk_name      : $("#params.BK_NAME").val()
+            , bk_day       : $("#params.BK_DAY").val()
+        }
+
+        // ajax 통신
+        $.ajax({
+            type : "get",             // HTTP method type(GET, POST) 형식이다.
+            url : "/chart/line2.do",  // 컨트롤러에서 대기중인 URL 주소이다.
+            dataType:"json",          // json방식으로 데이터를 가져온다.
+            data : params,            // Json 형식의 데이터이다.
+            success : function(data){ // 비동기통신의 성공일경우 success콜백으로 들어옵니다. 'res'는 응답받은 데이터이다.
+                // 응답코드 > 0000
+                alert(data.code);
+
+
+            },
+            error : function(XMLHttpRequest, textStatus, errorThrown){ // 비동기 통신이 실패할경우 error 콜백으로 들어옵니다.
+                alert("통신 실패.")
+            }
+        });
+    }
+
+
+</script>
+</body>
+</html>

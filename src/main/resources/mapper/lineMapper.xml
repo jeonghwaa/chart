@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sample">
+
+    <select id="getChart1" parameterType="hashmap" >
+        SELECT  DATE_FORMAT(BK_DAY, '%Y%m'),
+                COUNT(DISTINCT BK_NAME)
+        FROM BK_HISTORY
+        WHERE BK_NAME IS NOT NULL
+        GROUP BY DATE_FORMAT(BK_DAY, '%Y%m') BK_DAY = #{params.BK_DAY}
+    </select>
+
+</mapper>
