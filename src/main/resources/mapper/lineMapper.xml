@@ -2,12 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="sample">
 
-    <select id="getChart1" parameterType="hashmap" >
+    <select id="getLine2" parameterType="hashmap" >
         SELECT  DATE_FORMAT(BK_DAY, '%Y%m'),
                 COUNT(DISTINCT BK_NAME)
         FROM BK_HISTORY
         WHERE BK_NAME IS NOT NULL
-        GROUP BY DATE_FORMAT(BK_DAY, '%Y%m') BK_DAY = #{params.BK_DAY}
+        GROUP BY DATE_FORMAT(BK_DAY, '%Y%m') AS BK_DAY = #{paramMap.bk_day}
     </select>
 
 </mapper>

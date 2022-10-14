@@ -15,6 +15,7 @@ option = {
     tooltip: {
         trigger: 'axis'
     },
+
     legend: {
         data: ['Email', 'Union Ads', 'Video Ads', 'Direct', 'Search Engine']
     },

@@ -178,3 +178,4 @@ if (option && typeof option === 'object') {
 }
 
 window.addEventListener('resize', myChart.resize);
+
